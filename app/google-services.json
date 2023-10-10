@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "548681747642",
+    "project_id": "samani-d9322",
+    "storage_bucket": "samani-d9322.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:548681747642:android:22d1b0642f43207ac30683",
+        "android_client_info": {
+          "package_name": "com.example.samani"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDTgQYRUq5Bo3MXc2EwGwI5PnHYbyE65U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
