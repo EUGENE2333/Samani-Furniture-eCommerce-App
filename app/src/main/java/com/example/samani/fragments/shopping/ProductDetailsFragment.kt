@@ -121,6 +121,7 @@ class ProductDetailsFragment: Fragment() {
     private fun setupViewPager() {
         binding.apply{
             viewPagerProductImages.adapter = viewPagerAdapter
+            binding.dotsIndicator.setViewPager2(binding.viewPagerProductImages)
         }
     }
 

@@ -28,6 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 
+
             <ImageView
                 android:id="@+id/imageClose"
                 android:layout_width="40dp"
@@ -36,14 +37,31 @@
                 android:src="@drawable/ic_close"
                 app:tint="@color/g_black" />
 
-            
         </androidx.cardview.widget.CardView>
+
+        <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+            android:id="@+id/dotsIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="12dp"
+            app:dotsClickable="true"
+            app:dotsColor="@color/g_blue_gray200"
+            app:dotsSize="8dp"
+            app:selectedDotColor="@color/g_blue"
+           app:chainUseRtl="true"
+            app:flow_horizontalStyle="packed"
+            app:dotsSpacing="6dp"
+            app:dotsWidthFactor="2.5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardProductImages" />
 
         <LinearLayout
             android:id="@+id/linearTitlePrice"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="39dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:orientation="horizontal"
@@ -203,9 +221,6 @@
                 />
 
         </LinearLayout>
-
-
-
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/buttonAddToCartFAB"
             android:layout_width="wrap_content"
@@ -221,10 +236,6 @@
             android:textAllCaps="false"
 
             />
-
-
-
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
