@@ -71,4 +71,6 @@ of furniture products while staying updated on exclusive deals and offers.
   <img  width="210" height= "390"src = "https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/7b7e0256-2c74-4878-8ef7-8bc6e11dcd47" hspace= "10">  
   <img  width="210" height= "390"src = "https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/c0c77962-6795-4bb9-9d4c-b730aedfb67f" hspace= "10"> 
 </p>
+<p>
+   <img  width="210" height= "390"src = "https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/3ec75051-35c6-4b54-aac3-e3200cd0517a" hspace= "10"> </p>
 
