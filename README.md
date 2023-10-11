@@ -53,3 +53,17 @@ of furniture products while staying updated on exclusive deals and offers.
   conduct thorough testing, ensuring a stable and reliable platform.
 
 ## Screenshots
+
+![WhatsApp Image 2023-10-11 at 9 17 26 AM](https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/33dfc10c-12c8-4081-9d7c-f50b90ad4411) <br><br><br>![WhatsApp Image 2023-10-11 at 9 17 57 AM](https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/041d2aa6-9a4a-41c8-8f4e-2fc395d3ae37)
+<br><br><br> ![WhatsApp Image 2023-10-11 at 9 18 27 AM](https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/5e0a5764-9794-46c6-aec5-39a5db3b93ec)
+<br><br><br> ![WhatsApp Image 2023-10-11 at 9 20 37 AM](https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/6e9e66db-2afe-4cf5-9d3a-f884360af8fb)
+<br><br><br>![WhatsApp Image 2023-10-11 at 9 19 14 AM](https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/da8879d3-516b-417a-8dcf-aacfb1b1c603)
+<br><br><br> ![WhatsApp Image 2023-10-11 at 9 21 08 AM](https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/c4a17e13-172b-4169-80f7-d0eb4b85b34c)
+<br><br><br> ![WhatsApp Image 2023-10-11 at 9 21 37 AM](https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/051ea054-4538-4c48-8c38-ac0ee252ff85)
+<br><br><br> ![WhatsApp Image 2023-10-11 at 9 22 14 AM](https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/eb006a52-e0bf-4f9c-9df1-f7a045fc595b)
+<br><br><br> ![WhatsApp Image 2023-10-11 at 9 25 00 AM](https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/bceb8ee3-6441-4093-8875-d8d6a040d498)
+
+
+
+
+
