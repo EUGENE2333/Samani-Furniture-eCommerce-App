@@ -1,4 +1,4 @@
-# Samani-Furniture-eCommerce-App
+
 ## Overview
 Samani Furniture is a robust and user-friendly Android eCommerce app written in Kotlin, designed to connect furniture sellers
 with eager customers. This app provides a seamless shopping experience, allowing users to explore a vast array
@@ -53,18 +53,21 @@ of furniture products while staying updated on exclusive deals and offers.
   conduct thorough testing, ensuring a stable and reliable platform.
 
 ## Screenshots
+<p>
+    <img  width="210" height="390"src = "https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/e07271f6-fb1e-41a2-bb96-a42e2b625fd2" hspace= "10">
+    <img  width="210" height= "390"src = "https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/041d2aa6-9a4a-41c8-8f4e-2fc395d3ae37"hspace= "10">
+     <img  width="210" height= "390"src = "https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/e0ccb416-b192-400d-b4af-50b397c2849c" hspace= "10">
+       <img  width="210" height= "390"src = "https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/6cec5168-f3e3-429d-84ce-8904634d7c73" hspace= "10">  
+ </p>
 
-![WhatsApp Image 2023-10-11 at 9 17 26 AM](https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/33dfc10c-12c8-4081-9d7c-f50b90ad4411) <br><br><br>![WhatsApp Image 2023-10-11 at 9 17 57 AM](https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/041d2aa6-9a4a-41c8-8f4e-2fc395d3ae37)
-<br><br><br> ![WhatsApp Image 2023-10-11 at 9 18 27 AM](https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/5e0a5764-9794-46c6-aec5-39a5db3b93ec)
-<br><br><br> ![WhatsApp Image 2023-10-11 at 9 20 37 AM](https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/6e9e66db-2afe-4cf5-9d3a-f884360af8fb)
-<br><br><br>![WhatsApp Image 2023-10-11 at 9 19 14 AM](https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/da8879d3-516b-417a-8dcf-aacfb1b1c603)
-<br><br><br> ![WhatsApp Image 2023-10-11 at 9 21 08 AM](https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/c4a17e13-172b-4169-80f7-d0eb4b85b34c)
-<br><br><br> ![WhatsApp Image 2023-10-11 at 9 21 37 AM](https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/051ea054-4538-4c48-8c38-ac0ee252ff85)
-<br><br><br> ![WhatsApp Image 2023-10-11 at 9 22 14 AM](https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/eb006a52-e0bf-4f9c-9df1-f7a045fc595b)
-<br><br><br> ![WhatsApp Image 2023-10-11 at 9 25 00 AM](https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/bceb8ee3-6441-4093-8875-d8d6a040d498)
-<br><br><br> ![WhatsApp Image 2023-10-11 at 1 54 47 PM](https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/9ce6690c-94b7-4419-bfad-a613f4ad7186)
+<p>
+  <img  width="210" height= "390"src = "https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/fee94fb1-92ca-498f-b2e6-3973fce7da56" hspace= "10">
+  <img  width="210" height= "390"src = "https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/d1ddf7e0-4dab-418b-ad00-e111e6fc92cd" hspace= "10">  
+   <img  width="210" height= "390"src = "https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/e955b4b5-11cc-45c8-b1b4-bae578c2fb9a" hspace= "10">
+   <img  width="210" height= "390"src = "https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/7b7e0256-2c74-4878-8ef7-8bc6e11dcd47" hspace= "10">  
+</p>
 
-
-
-
+<p>
+  <img  width="210" height= "390"src = "https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/c0c77962-6795-4bb9-9d4c-b730aedfb67f" hspace= "10"> 
+</p>
 
