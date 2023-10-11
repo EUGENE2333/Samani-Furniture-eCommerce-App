@@ -62,6 +62,7 @@ of furniture products while staying updated on exclusive deals and offers.
 <br><br><br> ![WhatsApp Image 2023-10-11 at 9 21 37 AM](https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/051ea054-4538-4c48-8c38-ac0ee252ff85)
 <br><br><br> ![WhatsApp Image 2023-10-11 at 9 22 14 AM](https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/eb006a52-e0bf-4f9c-9df1-f7a045fc595b)
 <br><br><br> ![WhatsApp Image 2023-10-11 at 9 25 00 AM](https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/bceb8ee3-6441-4093-8875-d8d6a040d498)
+<br><br><br> ![WhatsApp Image 2023-10-11 at 1 54 47 PM](https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/9ce6690c-94b7-4419-bfad-a613f4ad7186)
 
 
 
