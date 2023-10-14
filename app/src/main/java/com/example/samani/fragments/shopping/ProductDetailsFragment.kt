@@ -44,7 +44,7 @@ class ProductDetailsFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        hideBottomNavigationView()
+
         binding = FragmentProductDetailsBinding.inflate(inflater)
 
         return binding.root
@@ -87,6 +87,7 @@ class ProductDetailsFragment: Fragment() {
                     is Resource.Success ->{
                         binding.buttonAddToCart.revertAnimation()
                         binding.buttonAddToCart.setBackgroundColor(resources.getColor(R.color.black))
+                        Toast.makeText(requireContext(), "Added to Cart", Toast.LENGTH_SHORT).show()
                     }
                     is Resource.Error ->{
                         binding.buttonAddToCart.revertAnimation()

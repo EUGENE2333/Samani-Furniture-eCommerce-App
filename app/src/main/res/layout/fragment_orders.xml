@@ -9,6 +9,7 @@
         android:id="@+id/toolbarAllOrders"
         android:layout_width="0dp"
         android:layout_height="?actionBarSize"
+        android:layout_marginTop="25dp"
         app:layout_constraintEnd_toEndOf="@id/guideline2"
         app:layout_constraintStart_toStartOf="@id/guideline1"
         app:layout_constraintTop_toTopOf="parent">
@@ -19,8 +20,8 @@
 
             <ImageView
                 android:id="@+id/imageCloseOrders"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:scaleType="centerInside"
                 android:src="@drawable/ic_close"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -31,7 +32,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="12dp"
                 android:fontFamily="@font/poppins_light"
                 android:text="All orders"
                 android:textColor="@color/black"

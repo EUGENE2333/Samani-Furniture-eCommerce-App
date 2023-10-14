@@ -4,10 +4,23 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/status_bar"
+        android:paddingBottom="10dp"
+        >
+
+
+
     <LinearLayout
         android:id="@+id/homeHeader"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="15dp"
         android:layout_marginTop="15dp"
@@ -31,13 +44,13 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:singleLine="true"
-                android:text="Search Product"
+                android:text="Search Samani"
                 android:textColor="#919394"
                 android:textSize="15sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent" />
-            
+
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
@@ -74,17 +87,20 @@
 
     </LinearLayout>
 
+    </FrameLayout>
+
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabRippleColor = "@color/white"
-        app:tabSelectedTextColor="@color/black"
+        app:tabRippleColor = "@color/status_bar"
+        app:tabSelectedTextColor="@color/white"
         app:tabTextAppearance="@style/tabLayout_text"
         app:tabMode = "scrollable"
-        android:layout_marginTop="5dp"
+        android:background="@color/status_bar"
         app:tabIndicator="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/homeHeader"
+        app:layout_constraintTop_toBottomOf="@id/frame"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

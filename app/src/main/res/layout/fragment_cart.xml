@@ -13,7 +13,8 @@
         <Toolbar
             android:id="@+id/toolbarCart"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -25,8 +26,8 @@
 
                 <ImageView
                     android:id="@+id/imageCloseCart"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/ic_close"
                     android:scaleType="centerInside"
                     app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +38,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="25dp"
+                    android:layout_marginStart="35dp"
                     android:fontFamily="@font/poppins_light"
                     android:text="My Cart"
                     android:textSize="20sp"
@@ -74,7 +75,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvCart"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             app:layout_constraintBottom_toTopOf="@id/bottomGuideLine"
             app:layout_constraintEnd_toEndOf="@id/rightGuideLine"
@@ -97,7 +98,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/total_box_background"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="25dp"
             app:layout_constraintStart_toStartOf="@id/leftGuideLine"
             app:layout_constraintEnd_toEndOf="@id/rightGuideLine"
             app:layout_constraintTop_toBottomOf="@id/bottomGuideLine">
@@ -152,7 +153,7 @@
             app:layout_constraintTop_toBottomOf="@id/totalBoxContainer"
             app:layout_constraintStart_toStartOf="@id/leftGuideLine"
             app:layout_constraintEnd_toEndOf="@id/rightGuideLine"/>
-        
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layoutCartEmpty"
             android:layout_width="match_parent"

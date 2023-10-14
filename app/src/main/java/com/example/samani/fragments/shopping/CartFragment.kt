@@ -45,6 +45,10 @@ class CartFragment:Fragment(R.layout.fragment_cart){
         setUpCartRv()
         var totalPrice = 0f
 
+        binding.imageCloseCart.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
         lifecycleScope.launchWhenStarted {
             viewModel.productsPrice.collectLatest {price ->
                 price?.let {

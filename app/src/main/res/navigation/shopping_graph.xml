@@ -72,7 +72,8 @@
         <argument
             android:name="address"
             app:argType="com.example.samani.data.Address"
-            app:nullable="true" />
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
     <fragment
         android:id="@+id/billingFragment"
@@ -87,10 +88,14 @@
             app:argType="float" />
         <argument
             android:name="products"
-            app:argType="com.example.samani.data.CartProduct[]" />
+            app:argType="com.example.samani.data.CartProduct[]"
+            app:nullable="true" />
         <argument
             android:name="payment"
             app:argType="boolean" />
+        <action
+            android:id="@+id/action_billingFragment_to_orderDetailFragment"
+            app:destination="@id/orderDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/userAccountFragment"
@@ -114,5 +119,10 @@
         <argument
             android:name="order"
             app:argType="com.example.samani.data.order.Order" />
+        <action
+            android:id="@+id/action_orderDetailFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/to_left" />
     </fragment>
 </navigation>

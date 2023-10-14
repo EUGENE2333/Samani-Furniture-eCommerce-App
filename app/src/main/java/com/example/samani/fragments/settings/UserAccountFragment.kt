@@ -114,6 +114,10 @@ class UserAccountFragment: Fragment() {
 
         }
 
+        binding.imageCloseUserAccount.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
     }
 
     private fun showUserInformation(data: User) {

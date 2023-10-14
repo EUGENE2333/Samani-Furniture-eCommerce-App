@@ -52,6 +52,7 @@ class SearchFragment : Fragment() {
         binding.searchEdittext.addTextChangedListener(object : TextWatcher{
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                viewModel.noResultsFound.value = false
             }
 
             override fun onTextChanged(s: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -90,6 +91,13 @@ class SearchFragment : Fragment() {
 
         }
 
+        lifecycleScope.launchWhenStarted {
+            viewModel.noResultsFound.collectLatest {
+                 if(it){
+                     Snackbar.make(requireView(),"No search Result found",Snackbar.LENGTH_SHORT).show()
+                 }
+              }
+            }
 
 
         lifecycleScope.launchWhenStarted {
@@ -98,16 +106,8 @@ class SearchFragment : Fragment() {
                     is Resource.Loading -> {
                         showLoading()
                         showBottomNavigationView()
-
                     }
                     is Resource.Success -> {
-                        if (it.data?.isEmpty() == true) {
-                            Snackbar.make(
-                                requireView(),
-                               "No Search Result Found",
-                                Snackbar.LENGTH_LONG
-                            ).show()
-                        }
                         searchedItemAdapter.differ.submitList(it.data)
                         hideLoading()
                         hideBottomNavigationView()

@@ -45,7 +45,7 @@ class BillingFragment: Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        products = args.products.toList()
+        products = args.products!!.toList()
         totalPrice = args.totalPrice
     }
 
@@ -105,8 +105,16 @@ class BillingFragment: Fragment() {
                     }
                     is Resource.Success -> {
                         binding.buttonPlaceOrder.revertAnimation()
-                        findNavController().navigateUp()
+                        val order = Order(
+                            OrderStatus.Ordered.status,
+                            it.data!!.totalPrice,
+                            it.data.products,
+                            selectedAddress!!
+                        )
+                        val bundle = Bundle().apply { putParcelable("order",order) }
+                        findNavController().navigate(R.id.action_billingFragment_to_orderDetailFragment,bundle)
                        Snackbar.make(requireView(),"Your order was placed",Snackbar.LENGTH_LONG).show()
+
 
                     }
                     is Resource.Error -> {
@@ -118,14 +126,16 @@ class BillingFragment: Fragment() {
             }
         }
 
-
         billingProductsAdapter.differ.submitList(products)
-        binding.tvTotalPrice.text = "Ksh $totalPrice"
+        binding.tvDeliveryPrice!!.text = "1700"
+        binding.tvTotalProductsPrice!!.text = "$totalPrice"
+        val total = totalPrice + 1700
+        binding.tvTotalPrice.text = "Ksh $total"
 
         addressAdapter.onClick = {
              selectedAddress = it
             if(!args.payment) {
-                val bundle = Bundle().apply { putParcelable("address", it) }
+                val bundle = Bundle().apply { putParcelable("address", selectedAddress) }
                 findNavController().navigate(R.id.action_billingFragment_to_addressFragment, bundle)
             }
         }
@@ -136,9 +146,10 @@ class BillingFragment: Fragment() {
                 return@setOnClickListener
             }
             showOrderConfirmationDialog()
-
         }
-
+        binding.imageCloseBilling.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     private fun showOrderConfirmationDialog() {
@@ -175,7 +186,7 @@ class BillingFragment: Fragment() {
 
     private fun setUpBillingProductsRv() {
         binding.rvProducts.apply{
-            layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+            layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
             adapter =billingProductsAdapter
             addItemDecoration(HorizontalItemDecoration())
         }
@@ -183,12 +194,4 @@ class BillingFragment: Fragment() {
 
 
 }
-
-
-
-
-
-
-
-
 

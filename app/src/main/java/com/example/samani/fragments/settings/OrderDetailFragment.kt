@@ -4,20 +4,30 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.samani.R
 import com.example.samani.adapters.BillingProductsAdapter
 import com.example.samani.data.order.OrderStatus
 import com.example.samani.data.order.getOrderStatus
 import com.example.samani.databinding.FragmentOrderDetailBinding
 import com.example.samani.util.VerticalItemDecoration
+import com.example.samani.util.hideBottomNavigationView
 
 class OrderDetailFragment: Fragment() {
     private lateinit var binding: FragmentOrderDetailBinding
     private val billingProductAdapter by lazy{BillingProductsAdapter()}
     private val args by navArgs<OrderDetailFragmentArgs>()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        hideBottomNavigationView()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,6 +36,7 @@ class OrderDetailFragment: Fragment() {
     ): View? {
         binding = FragmentOrderDetailBinding.inflate(inflater)
         return binding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -64,10 +75,17 @@ class OrderDetailFragment: Fragment() {
             tvPhoneNumber.text = order.address.phone
             tvTotalPrice.text = "Ksh ${order.totalPrice}"
 
-
+            imageCloseOrder.setOnClickListener {
+                findNavController().navigate(R.id.action_orderDetailFragment_to_homeFragment)
+            }
         }
 
         billingProductAdapter.differ.submitList(order.products)
+
+        // Handle back button press
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+           findNavController().navigate(R.id.action_orderDetailFragment_to_homeFragment)
+        }
 
     }
 

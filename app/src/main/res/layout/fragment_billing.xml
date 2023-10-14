@@ -14,6 +14,7 @@
             android:id="@+id/toolbarBilling"
             android:layout_width="0dp"
             android:layout_height="?actionBarSize"
+            android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="@id/guideline2"
             app:layout_constraintStart_toStartOf="@id/guideline1"
             app:layout_constraintTop_toTopOf="parent">
@@ -23,25 +24,28 @@
                 android:layout_height="match_parent">
                 <ImageView
                     android:id="@+id/imageCloseBilling"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/ic_close"
+                    android:layout_marginEnd="5dp"
                     android:scaleType="centerInside"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:tint="@color/black" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="25dp"
+                    android:layout_marginStart="44dp"
                     android:fontFamily="@font/poppins_light"
                     android:text="Billing"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="@id/imageCloseBilling"
                     app:layout_constraintStart_toStartOf="@id/imageCloseBilling"
-                    app:layout_constraintTop_toTopOf="@id/imageCloseBilling" />
+                    app:layout_constraintTop_toTopOf="@id/imageCloseBilling"
+                     />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.appcompat.widget.Toolbar>
 
@@ -157,7 +161,7 @@
             app:layout_constraintStart_toStartOf="@id/guideline1"
             app:layout_constraintTop_toBottomOf="@id/middleLine"
             tools:listitem="@layout/billing_products_rv_item"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
         <View
@@ -182,36 +186,108 @@
             app:layout_constraintStart_toStartOf="@id/guideline1"
             app:layout_constraintEnd_toEndOf="@id/guideline2">
 
-
             <TextView
+                android:id="@+id/tvSummary"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:text="Summary"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginStart="10dp"
+                />
+
+            <TextView
+                android:id="@+id/tvTotalProducts"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="22dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintStart_toStartOf="@id/tvSummary"
+                android:text="Proucts"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@id/tvSummary"
+                />
+
+            <TextView
+                android:id="@+id/tvTotalProductsPrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/sf_pro_display"
+                android:text="Ksh 20150"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/tvTotalProducts"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvTotalProducts" />
+
+            <TextView
+                android:id="@+id/tvDelivery"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="22dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintStart_toStartOf="@id/tvSummary"
+                android:text="Delivery"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@id/tvTotalProducts"
+                />
+
+            <TextView
+                android:id="@+id/tvDeliveryPrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/sf_pro_display"
+                android:text="Ksh 1700"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/tvDelivery"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvDelivery" />
+
+
+            <TextView
+                android:id="@+id/tvTotal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp"
                 android:fontFamily="@font/sf_pro_display"
                 android:text="Total"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="22sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/tvDelivery" />
 
 
             <TextView
                 android:id="@+id/tvTotalPrice"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="15dp"
                 android:fontFamily="@font/sf_pro_display"
                 android:text="Ksh 20150"
                 android:textColor="@color/black"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/tvTotal"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@id/tvTotal" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -219,8 +295,10 @@
         <com.github.leandroborgesferreira.loadingbutton.customViews.CircularProgressButton
             android:id="@+id/buttonPlaceOrder"
             android:layout_width="0dp"
-            android:layout_height="@dimen/mediumButtomHeight"
+            android:layout_height="@dimen/smallButtonHeight"
             style="@style/blueButtonStyle"
+            Style="@style/h3"
+            android:backgroundTint="@color/teal_700"
             app:layout_constraintTop_toBottomOf="@id/totalBoxContainer"
             app:layout_constraintStart_toStartOf="@id/totalBoxContainer"
             app:layout_constraintEnd_toEndOf="@id/totalBoxContainer"

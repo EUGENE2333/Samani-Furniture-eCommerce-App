@@ -91,6 +91,11 @@ class AddressFragment: Fragment() {
                 viewModel.addAddress(address)
             }
         }
+
+        binding.imageAddressClose.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
     }
 
 

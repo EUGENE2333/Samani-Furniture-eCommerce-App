@@ -107,8 +107,6 @@ class CartViewModel @Inject constructor(
                     viewModelScope.launch { _cartProducts.emit(Resource.Loading()) }
                     decreaseQuantity(documentId)
                 }
-
-
             }
         }
     }
