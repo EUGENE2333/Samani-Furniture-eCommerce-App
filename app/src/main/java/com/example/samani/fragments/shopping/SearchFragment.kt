@@ -32,7 +32,6 @@ class SearchFragment : Fragment() {
     private lateinit var binding: FragmentSearchBinding
     private lateinit var searchedItemAdapter: SearchedItemAdapter
     val viewModel by viewModels<SearchViewModel>()
-    val args by navArgs<ProductDetailsFragmentArgs>()
 
 
     override fun onCreateView(
@@ -99,7 +98,6 @@ class SearchFragment : Fragment() {
               }
             }
 
-
         lifecycleScope.launchWhenStarted {
             viewModel.searchedProducts.collectLatest {
                 when (it) {
@@ -123,9 +121,7 @@ class SearchFragment : Fragment() {
             }
         }
 
-
     }
-
     private fun showLoading() {
         binding.progressBar.visibility = View.VISIBLE
     }

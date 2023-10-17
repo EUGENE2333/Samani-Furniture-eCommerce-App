@@ -128,16 +128,13 @@ class MainCategoryFragment: Fragment(R.layout.fragment_main_category) {
             viewModel.bestProducts.collectLatest {
                 when(it){
                     is Resource.Loading -> {
-                       binding.bestProductsProgressBar.visibility = View.VISIBLE
                     }
                     is Resource.Success -> {
                         bestProductsAdapter.differ.submitList(it.data)
-                        binding.bestProductsProgressBar.visibility = View.GONE
                     }
                     is Resource.Error -> {
                         Log.e(TAG,it.message.toString())
                         Toast.makeText(requireContext(), "${it.message}", Toast.LENGTH_SHORT).show()
-                        binding.bestProductsProgressBar.visibility = View.GONE
                     }
                     else -> Unit
 
@@ -165,12 +162,15 @@ class MainCategoryFragment: Fragment(R.layout.fragment_main_category) {
     }
 
     private fun setUpBestDealsRv() {
-      bestDealsAdapter = BestDealsAdapter()
-        binding.rvBestDealsProducts.apply{
-            layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+        bestDealsAdapter = BestDealsAdapter()
+        binding.rvBestDealsProducts.apply {
+            layoutManager =
+                GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
             adapter = bestDealsAdapter
         }
     }
+
+
 
     private fun setUpSpecialProductsRv() {
        specialProductsAdapter = SpecialProductsAdapter()
@@ -182,11 +182,28 @@ class MainCategoryFragment: Fragment(R.layout.fragment_main_category) {
 
 
     private fun hideLoading() {
-        binding.mainCategoryProgressBar.visibility = View.GONE
+        binding.apply {
+            mainCategoryProgressBar.visibility = View.GONE
+            tvSeeAllDeals.visibility = View.VISIBLE
+            backgroundDisplay.visibility = View.VISIBLE
+            imgForward.visibility = View.VISIBLE
+            viewLine.visibility = View.VISIBLE
+            tvBestDeals.visibility = View.VISIBLE
+            tvBestProducts.visibility = View.VISIBLE
+        }
     }
 
     private fun showLoading() {
-        binding.mainCategoryProgressBar.visibility = View.VISIBLE
+        binding.apply {
+            mainCategoryProgressBar.visibility = View.VISIBLE
+            tvSeeAllDeals.visibility = View.GONE
+            backgroundDisplay.visibility = View.GONE
+            imgForward.visibility = View.GONE
+            viewLine.visibility = View.GONE
+            tvBestDeals.visibility = View.GONE
+            tvBestProducts.visibility = View.GONE
+        }
+
     }
 
     override fun onResume() {
