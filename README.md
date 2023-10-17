@@ -54,23 +54,29 @@ of furniture products while staying updated on exclusive deals and offers.
 
 ## Screenshots
 <p>
-    <img  width="210" height="390"src = "https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/e07271f6-fb1e-41a2-bb96-a42e2b625fd2" hspace= "10">
-    <img  width="210" height= "390"src = "https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/041d2aa6-9a4a-41c8-8f4e-2fc395d3ae37"hspace= "10">
-     <img  width="210" height= "390"src = "https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/e0ccb416-b192-400d-b4af-50b397c2849c" hspace= "10"> 
+    <img  width="210" height="390"src = "https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/dcb2b14e-555b-4f76-9585-7e03ddac71fb" hspace= "10">
+   <img  width="210" height="390"src = "https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/76504cbe-08f0-4b48-8f60-609e8f83604e" hspace= "10">   
+  <img  width="210" height="390"src = "https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/b94e8c47-3933-48f3-8e2e-6579de1f3d5c" hspace= "10"> 
+ 
  </p>
+  <img  width="210" height= "390"src = "https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/5aa0ad85-88bf-43ff-8af6-46b432e820c2" hspace= "10">
+     <img  width="210" height= "390"src = "https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/f6d149b7-7988-4216-acd5-cd93904ade35" hspace= "10"> 
+    <img  width="210" height= "390"src = "https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/3584ff12-be0f-49bd-8407-1d1b1a2952f1" hspace= "10"> 
+    </p>
 
 <p>
-       <img  width="210" height= "390"src = "https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/6cec5168-f3e3-429d-84ce-8904634d7c73" hspace= "10"> 
-  <img  width="210" height= "390"src = "https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/fee94fb1-92ca-498f-b2e6-3973fce7da56" hspace= "10">
-  <img  width="210" height= "390"src = "https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/d1ddf7e0-4dab-418b-ad00-e111e6fc92cd" hspace= "10">  
-  
-</p>
+       <img  width="210" height= "390"src = "https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/c7c85129-195e-47cd-9181-82ab10ccc61e" hspace= "10">
+  <img  width="210" height= "390"src = "https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/5ec8b7f7-da2a-4672-9fb4-0a66981c5496" hspace= "10">  
+  <img  width="210" height= "390"src = "https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/09b4305a-8607-4b8b-b378-436565e3dc4b" hspace= "10">
+  </p>
 
 <p>
-  <img  width="210" height= "390"src = "https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/e955b4b5-11cc-45c8-b1b4-bae578c2fb9a" hspace= "10">
-  <img  width="210" height= "390"src = "https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/7b7e0256-2c74-4878-8ef7-8bc6e11dcd47" hspace= "10">  
-  <img  width="210" height= "390"src = "https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/c0c77962-6795-4bb9-9d4c-b730aedfb67f" hspace= "10"> 
+  <img  width="210" height= "390"src = "https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/2be5c1e0-d09f-4652-a0d9-65d65aed8423" hspace= "10">
+   <img  width="210" height= "390"src = "https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/831e6b59-9617-441c-8ac2-d9dd4db31c92" hspace= "10">
+ <img  width="210" height= "390"src = "https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/bc54712b-d8f7-48cc-905a-02da7a9a0dfc" hspace= "10"> 
+ 
 </p>
 <p>
-   <img  width="210" height= "390"src = "https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/3ec75051-35c6-4b54-aac3-e3200cd0517a" hspace= "10"> </p>
+    <img  width="210" height= "390"src = "https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/6265aeeb-d1d6-41f1-bc70-89165182b479" hspace= "10">  
+   <img  width="210" height= "390"src = "https://github.com/EUGENE2333/Samani-Furniture-eCommerce-App/assets/124275936/3db78581-1303-4782-8067-0e76e56e16a8" hspace= "10"> </p>
 
