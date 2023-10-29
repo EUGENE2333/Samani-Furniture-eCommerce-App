@@ -6,6 +6,7 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -46,7 +47,10 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setUpSearchedItemRv()
-
+         // Handle back button press
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            findNavController().navigate(R.id.action_searchFragment_to_homeFragment)
+        }
 
         binding.searchEdittext.addTextChangedListener(object : TextWatcher{
 

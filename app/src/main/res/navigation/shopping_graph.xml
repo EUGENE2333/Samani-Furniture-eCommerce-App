@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_homeFragment_to_productDetailsFragment"
             app:destination="@id/productDetailsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -22,6 +25,9 @@
         <action
             android:id="@+id/action_searchFragment_to_productDetailsFragment"
             app:destination="@id/productDetailsFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/cartFragment"
@@ -125,4 +131,8 @@
             app:exitAnim="@anim/to_right"
             app:popEnterAnim="@anim/to_left" />
     </fragment>
+    <fragment
+        android:id="@+id/moreFragment"
+        android:name="com.example.samani.fragments.shopping.MoreFragment"
+        android:label="MoreFragment" />
 </navigation>
