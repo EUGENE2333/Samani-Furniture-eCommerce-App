@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_homeFragment_to_searchFragment"
             app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_bestDealsFragment"
+            app:destination="@id/bestDealsFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -134,5 +137,18 @@
     <fragment
         android:id="@+id/moreFragment"
         android:name="com.example.samani.fragments.shopping.MoreFragment"
-        android:label="MoreFragment" />
+        android:label="MoreFragment"
+        tools:layout="@layout/fragment_more"/>
+    <fragment
+        android:id="@+id/bestDealsFragment"
+        android:name="com.example.samani.fragments.categories.BestDealsFragment"
+        android:label="BestDealsFragment"
+        tools:layout="@layout/fragment_best_deals">
+        <action
+            android:id="@+id/action_bestDealsFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+        <action
+            android:id="@+id/action_bestDealsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

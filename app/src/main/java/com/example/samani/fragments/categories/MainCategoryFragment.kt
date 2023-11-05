@@ -13,9 +13,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
 import com.example.samani.R
-import com.example.samani.adapters.BestDealsAdapter
+import com.example.samani.adapters.BestDealsHomePageAdapter
 import com.example.samani.adapters.BestProductsAdapter
 import com.example.samani.adapters.SpecialProductsAdapter
 import com.example.samani.databinding.FragmentMainCategoryBinding
@@ -32,7 +31,7 @@ class MainCategoryFragment: Fragment(R.layout.fragment_main_category) {
     private lateinit var binding : FragmentMainCategoryBinding
     private lateinit var specialProductsAdapter: SpecialProductsAdapter
     private lateinit var bestProductsAdapter: BestProductsAdapter
-    private lateinit var bestDealsAdapter: BestDealsAdapter
+    private lateinit var bestDealsAdapter: BestDealsHomePageAdapter
 
     private val viewModel by viewModels<MainCategoryViewModel>()
 
@@ -66,6 +65,9 @@ class MainCategoryFragment: Fragment(R.layout.fragment_main_category) {
         bestDealsAdapter.onClick = {
             val bundle = Bundle().apply{ putParcelable("product",it)}
             findNavController().navigate(R.id.action_homeFragment_to_productDetailsFragment,bundle)
+        }
+        binding.tvSeeAllDeals.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_bestDealsFragment)
         }
 
         lifecycleScope.launchWhenStarted {
@@ -162,7 +164,7 @@ class MainCategoryFragment: Fragment(R.layout.fragment_main_category) {
     }
 
     private fun setUpBestDealsRv() {
-        bestDealsAdapter = BestDealsAdapter()
+        bestDealsAdapter = BestDealsHomePageAdapter()
         binding.rvBestDealsProducts.apply {
             layoutManager =
                 GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)

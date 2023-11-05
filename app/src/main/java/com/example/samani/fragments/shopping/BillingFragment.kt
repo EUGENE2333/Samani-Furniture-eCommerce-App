@@ -185,7 +185,7 @@ class BillingFragment: Fragment() {
     }
 
     private fun setUpBillingProductsRv() {
-        binding.rvProducts.apply{
+        binding.rvProducts?.apply{
             layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
             adapter =billingProductsAdapter
             addItemDecoration(HorizontalItemDecoration())

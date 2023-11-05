@@ -148,7 +148,7 @@
             />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvProducts"
+            android:id="@+id/rvBestDeals"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -166,7 +166,7 @@
             android:layout_height="1dp"
             android:layout_marginTop="15dp"
             android:background="@drawable/white_background"
-            app:layout_constraintTop_toBottomOf="@id/rvProducts"
+            app:layout_constraintTop_toBottomOf="@id/rvBestDeals"
             app:layout_constraintStart_toStartOf="@id/guideline1"
             app:layout_constraintEnd_toEndOf="@id/guideline2"
             android:backgroundTint="@color/g_blue_gray200"
@@ -178,7 +178,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:background="@drawable/total_box_background"
-            app:layout_constraintTop_toBottomOf="@id/rvProducts"
+            app:layout_constraintTop_toBottomOf="@id/rvBestDeals"
             app:layout_constraintStart_toStartOf="@id/guideline1"
             app:layout_constraintEnd_toEndOf="@id/guideline2">
 
