@@ -58,10 +58,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
                 android:text="Top deals for you"
-                android:fontFamily="@font/poppins_regular"
+                android:fontFamily="@font/myriad_font"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="@id/rvSpecialProducts"
                 app:layout_constraintTop_toBottomOf="@id/rvSpecialProducts" />
 
@@ -81,7 +81,8 @@
                 android:layout_marginTop="4dp"
                 android:text="See all deals"
                 android:textColor="@color/teal_700"
-                android:textSize="14sp"
+                android:textSize="17sp"
+                android:fontFamily="@font/myriad_font"
                 app:layout_constraintStart_toStartOf="@id/rvBestDealsProducts"
                 app:layout_constraintTop_toBottomOf="@id/rvBestDealsProducts" />
 
@@ -114,10 +115,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Best products"
-                android:fontFamily="@font/poppins_regular"
+                android:fontFamily="@font/myriad_font"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="@id/rvBestDealsProducts"
                 app:layout_constraintTop_toBottomOf="@id/viewLine" />
 

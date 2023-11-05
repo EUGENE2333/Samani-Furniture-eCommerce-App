@@ -17,7 +17,8 @@
             android:drawableStart="@drawable/ic_klaine_shape"
             android:drawablePadding="6dp"
             android:textStyle="bold"
-            android:text="Samani."
+            android:text="Samani"
+            android:fontFamily="@font/myriad_font"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -31,7 +32,8 @@
             android:layout_marginTop="45dp"
             android:text="@string/rightAddress"
             android:textStyle="bold"
-            android:textSize="29sp"
+            android:fontFamily="@font/myriad_font"
+            android:textSize="32sp"
             android:textAlignment="center"
             android:gravity="center"
             app:layout_constraintTop_toBottomOf="@id/tvAppName"
@@ -48,6 +50,8 @@
             app:layout_constraintTop_toBottomOf="@id/tvRightAddressForShopping"
             android:textAlignment="center"
             android:gravity="center"
+            android:fontFamily="@font/myriad_font"
+            android:textSize="22sp"
             android:text="@string/Quality"
             android:layout_marginTop="15dp" />
 
@@ -57,11 +61,14 @@
             android:layout_width="@dimen/mediumButtonWidth"
             android:layout_height="@dimen/smallButtonHeight"
             android:text="@string/registerButtonName"
+            android:fontFamily="@font/myriad_font"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/tvQuality"
+            app:layout_constraintHorizontal_bias="0.476"
             app:layout_constraintStart_toStartOf="@id/tvQuality"
             app:layout_constraintTop_toBottomOf="@id/tvQuality"
-            app:layout_constraintVertical_bias="0.291" />
+            app:layout_constraintVertical_bias="0.293" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonLoginAccountOptions"
@@ -69,6 +76,8 @@
             android:layout_height="@dimen/smallButtonHeight"
             style="@style/whiteButtonStyle"
             android:textStyle="bold"
+            android:fontFamily="@font/myriad_font"
+            android:textSize="20sp"
             app:layout_constraintTop_toBottomOf="@id/buttonRegisterAccountOptions"
             app:layout_constraintStart_toStartOf="@id/tvQuality"
             app:layout_constraintEnd_toEndOf="@id/tvQuality"

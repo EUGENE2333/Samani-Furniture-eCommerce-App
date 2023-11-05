@@ -23,6 +23,8 @@
         <TextView
             android:id="@+id/tvOrderId"
             style="@style/MediumTextViewThin"
+            android:fontFamily="@font/myriad_font"
+            android:textSize="16sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
@@ -40,6 +42,8 @@
         android:id="@+id/tvOrderDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/myriad_font"
+        android:textSize="14sp"
         tools:text="@tools:sample/lorem" />
 
     <View

@@ -32,10 +32,10 @@
             app:layout_constraintTop_toTopOf="@id/imageSpecialRvItem"
             android:layout_marginTop="7dp"
             android:layout_marginStart="18dp"
-            android:fontFamily="@font/poppins_regular"
+            android:fontFamily="@font/myriad_font"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:textSize="17sp"
+            android:textSize="18sp"
             android:maxLines="2"/>
 
         <TextView
@@ -53,10 +53,10 @@
             android:id="@+id/btn_add_to_cart"
             android:layout_width="77dp"
             android:layout_height="25dp"
-            android:background="@drawable/blue_background"
+            android:background="@drawable/white2_background"
             android:fontFamily="@font/poppins_light"
             android:text="Add to cart"
-            android:textColor="@color/white"
+            android:textColor="@color/g_blue"
             android:textSize="10sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"

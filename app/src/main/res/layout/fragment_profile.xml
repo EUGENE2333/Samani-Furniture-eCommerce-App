@@ -37,6 +37,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:text="Settings"
+                android:fontFamily="@font/myriad_font"
+                android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="@id/guideline1"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -67,6 +69,7 @@
                     android:layout_marginTop="3dp"
                     android:textSize="18sp"
                     android:text="Name"
+                    android:fontFamily="@font/myriad_font"
                     app:layout_constraintStart_toEndOf="@id/imageUser"
                     app:layout_constraintTop_toTopOf="@+id/imageUser" />
 
@@ -75,7 +78,8 @@
                 <TextView
                     android:id="@+id/tv_edit_personal_details"
                     style="@style/SmallTextViewThin"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/myriad_font"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="edit personal details"
@@ -105,6 +109,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Orders"
+                android:fontFamily="@font/myriad_font"
+                android:textSize="15sp"
                 app:layout_constraintStart_toStartOf="@id/guideline1"
                 app:layout_constraintTop_toBottomOf="@id/constraintProfile" />
 
@@ -140,6 +146,8 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:fontFamily="@font/myriad_font"
+                        android:textSize="15sp"
                         android:text="All orders"
                         android:textColor="@color/g_grey700"
                         android:textStyle="bold"
@@ -178,6 +186,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Track Orders"
+                        android:fontFamily="@font/myriad_font"
+                        android:textSize="15sp"
                         android:textColor="@color/g_grey700"
                         android:textStyle="bold"
                         android:layout_marginStart="15dp"
@@ -214,6 +224,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Billing"
+                        android:fontFamily="@font/myriad_font"
+                        android:textSize="15sp"
                         android:textColor="@color/g_grey700"
                         android:textStyle="bold"
                         android:layout_marginStart="15dp"
@@ -239,6 +251,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:text="Notifications"
+                android:fontFamily="@font/myriad_font"
+                android:textSize="15sp"
                 app:layout_constraintStart_toStartOf="@id/guideline1"
                 app:layout_constraintTop_toBottomOf="@id/linearOrders" />
 
@@ -275,6 +289,8 @@
                         android:text="Notifications"
                         android:textColor="@color/g_grey700"
                         android:textStyle="bold"
+                        android:fontFamily="@font/myriad_font"
+                        android:textSize="15sp"
                         android:layout_marginStart="15dp"
                         android:layout_gravity="center_vertical"/>
 
@@ -301,6 +317,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Regional"
+                android:fontFamily="@font/myriad_font"
+                android:textSize="15sp"
                 app:layout_constraintStart_toStartOf="@id/guideline1"
                 app:layout_constraintTop_toBottomOf="@id/linearNotifications" />
 
@@ -342,6 +360,8 @@
                         android:layout_marginStart="15dp"
                         android:layout_weight="1"
                         android:text="Logout"
+                        android:fontFamily="@font/myriad_font"
+                        android:textSize="15sp"
                         android:textColor="@color/g_grey700"
                         android:textStyle="bold" />
 
@@ -362,10 +382,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:fontFamily="@font/sf_pro_display"
                 android:text="Version 1.0"
                 android:textColor="@color/g_grey700"
-                android:textSize="10sp"
+                android:fontFamily="@font/myriad_font"
+                android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/guideline2"
                 app:layout_constraintStart_toStartOf="@id/guideline1"
