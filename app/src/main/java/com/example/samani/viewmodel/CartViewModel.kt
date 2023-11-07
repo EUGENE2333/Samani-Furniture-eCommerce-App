@@ -48,7 +48,7 @@ class CartViewModel @Inject constructor(
     }
 
     fun deleteCartProduct(cartProduct: CartProduct){
-        val index = cartProducts.value.data?.indexOf(cartProduct)
+        val index = _cartProducts.value.data?.indexOf(cartProduct)
         if(index != null && index != -1) {
             val documentId = cartProductDocuments[index].id
             firestore.collection("user").document(auth.uid!!).collection("cart")
@@ -130,15 +130,3 @@ class CartViewModel @Inject constructor(
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-

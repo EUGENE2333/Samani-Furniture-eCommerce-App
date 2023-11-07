@@ -17,10 +17,13 @@ import com.example.samani.R
 import com.example.samani.adapters.BestDealsHomePageAdapter
 import com.example.samani.adapters.BestProductsAdapter
 import com.example.samani.adapters.SpecialProductsAdapter
+import com.example.samani.data.MyListProduct
 import com.example.samani.databinding.FragmentMainCategoryBinding
 import com.example.samani.util.Resource
 import com.example.samani.util.showBottomNavigationView
+import com.example.samani.viewmodel.AddToWishlistViewModel
 import com.example.samani.viewmodel.MainCategoryViewModel
+import com.example.samani.viewmodel.MyListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 
@@ -32,8 +35,8 @@ class MainCategoryFragment: Fragment(R.layout.fragment_main_category) {
     private lateinit var specialProductsAdapter: SpecialProductsAdapter
     private lateinit var bestProductsAdapter: BestProductsAdapter
     private lateinit var bestDealsAdapter: BestDealsHomePageAdapter
-
     private val viewModel by viewModels<MainCategoryViewModel>()
+    private val addToWishlistViewModel by viewModels<AddToWishlistViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -68,6 +71,10 @@ class MainCategoryFragment: Fragment(R.layout.fragment_main_category) {
         }
         binding.tvSeeAllDeals.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_bestDealsFragment)
+        }
+        bestProductsAdapter.onImgFavouriteClick ={
+            addToWishlistViewModel.addProductToWishlist(MyListProduct(product = it))
+
         }
 
         lifecycleScope.launchWhenStarted {
@@ -133,6 +140,25 @@ class MainCategoryFragment: Fragment(R.layout.fragment_main_category) {
                     }
                     is Resource.Success -> {
                         bestProductsAdapter.differ.submitList(it.data)
+                    }
+                    is Resource.Error -> {
+                        Log.e(TAG,it.message.toString())
+                        Toast.makeText(requireContext(), "${it.message}", Toast.LENGTH_SHORT).show()
+                    }
+                    else -> Unit
+
+                }
+
+            }
+        }
+
+        lifecycleScope.launchWhenStarted {
+            addToWishlistViewModel.myListProducts.collectLatest {
+                when(it){
+                    is Resource.Loading -> {
+                    }
+                    is Resource.Success -> {
+                        Toast.makeText(requireContext(), "Added To Wishlist", Toast.LENGTH_SHORT).show()
                     }
                     is Resource.Error -> {
                         Log.e(TAG,it.message.toString())
@@ -214,15 +240,3 @@ class MainCategoryFragment: Fragment(R.layout.fragment_main_category) {
         showBottomNavigationView()
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-

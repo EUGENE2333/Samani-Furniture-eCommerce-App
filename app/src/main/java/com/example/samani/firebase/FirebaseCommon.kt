@@ -1,6 +1,7 @@
 package com.example.samani.firebase
 
 import com.example.samani.data.CartProduct
+import com.example.samani.data.MyListProduct
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -11,6 +12,21 @@ class FirebaseCommon (
 
     private val cartCollection =
         firestore.collection("user").document(auth.uid!!).collection("cart")
+
+    private val wishlistCollection =
+        firestore.collection("user").document(auth.uid!!).collection("wishlist")
+
+
+
+    fun addProductToWishlist(myListProduct: MyListProduct,onResult: (MyListProduct?, Exception?) -> Unit){
+        wishlistCollection.document().set(myListProduct)
+            .addOnSuccessListener {
+                onResult(myListProduct,null)
+            }
+            .addOnFailureListener {
+                onResult(null,it)
+            }
+    }
 
     fun addProductToCart(cartProduct: CartProduct,onResult:(CartProduct?,Exception?) -> Unit){
         cartCollection.document().set(cartProduct)
@@ -66,18 +82,4 @@ class FirebaseCommon (
     enum class QuantityChanging{
         INCREASE, DECREASE
     }
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
