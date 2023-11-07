@@ -1,5 +1,6 @@
 package com.example.samani.adapters
 
+import android.content.Context
 import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
@@ -8,14 +9,12 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.samani.data.MyListProduct
 import com.example.samani.data.Product
 import com.example.samani.databinding.ProductRvItemBinding
 import com.example.samani.helper.getProductPrice
 
 
 class BestProductsAdapter:RecyclerView.Adapter<BestProductsAdapter.BestProductsViewHolder>() {
-    var isProductAdded = false
 
     inner class BestProductsViewHolder(val binding: ProductRvItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -39,6 +38,50 @@ class BestProductsAdapter:RecyclerView.Adapter<BestProductsAdapter.BestProductsV
                 }
 
                 tvName.text = product.name
+            }
+            val sharedPreferences = binding.root.context.getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
+            val productId = product.id
+
+            // Update visibility based on SharedPreferences
+            val isImgFavourite2Visible = sharedPreferences.getBoolean(productId, false)
+            if (isImgFavourite2Visible) {
+
+                binding.imgFavorite2.visibility = View.VISIBLE
+                binding.imgFavorite.visibility = View.GONE
+
+            } else {
+                binding.imgFavorite2.visibility = View.GONE
+                binding.imgFavorite.visibility = View.VISIBLE
+            }
+
+            binding.imgProduct.setOnClickListener {
+                onClick?.invoke(product)
+
+            }
+            binding.imgFavorite.setOnClickListener {
+                onImgFavouriteClick?.invoke(product)
+
+                   binding.imgFavorite.visibility = View.GONE
+                    binding.imgFavorite2.visibility = View.VISIBLE
+                // Save the new visibility state to SharedPreferences
+                val editor = sharedPreferences.edit()
+                val newVisibility = !isImgFavourite2Visible
+                editor.putBoolean(productId, newVisibility)
+                editor.apply()
+            }
+
+            binding.imgFavorite2.setOnClickListener {
+                onImgFavourite2Click?.invoke(product)
+                   binding.imgFavorite.visibility = View.VISIBLE
+                    binding.imgFavorite2.visibility = View.GONE
+
+
+                // Save the new visibility state to SharedPreferences
+                val editor = sharedPreferences.edit()
+                val newVisibility = !isImgFavourite2Visible
+                editor.putBoolean(productId, newVisibility)
+                editor.apply()
+
             }
 
         }
@@ -80,23 +123,6 @@ class BestProductsAdapter:RecyclerView.Adapter<BestProductsAdapter.BestProductsV
         val product = differ.currentList[position]
         holder.bind(product)
 
-        holder.binding.imgProduct.setOnClickListener {
-            onClick?.invoke(product)
-        }
-        holder.binding.imgFavorite.setOnClickListener {
-            onImgFavouriteClick?.invoke(product)
-
-                holder.binding.imgFavorite.visibility = View.GONE
-                holder.binding.imgFavorite2.visibility = View.VISIBLE
-        }
-
-        holder.binding.imgFavorite2.setOnClickListener {
-            onImgFavourite2Click?.invoke(product)
-
-                holder.binding.imgFavorite.visibility = View.VISIBLE
-                holder.binding.imgFavorite2.visibility = View.GONE
-
-        }
     }
 
     var onClick: ((Product) -> Unit)? = null
