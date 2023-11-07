@@ -77,11 +77,12 @@ class AddToWishlistViewModel @Inject constructor(
     }
 
     fun deleteWishlistProduct(myListProduct: MyListProduct) {
+        viewModelScope.launch {
         val documentId = myListProduct.product.id
         firestore.collection("user").document(auth.uid!!).collection("wishlist")
             .document(documentId).delete()
 
-        viewModelScope.launch {
+
             _isProductAdded.emit(false)
         }
     }

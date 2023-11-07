@@ -76,6 +76,10 @@ class MainCategoryFragment: Fragment(R.layout.fragment_main_category) {
             addToWishlistViewModel.addProductToWishlist(MyListProduct(product = it))
 
         }
+        bestProductsAdapter.onImgFavourite2Click ={
+            val myListProduct = MyListProduct(product = it)
+            addToWishlistViewModel.deleteWishlistProduct(myListProduct)
+        }
 
         lifecycleScope.launchWhenStarted {
             viewModel.specialProducts.collectLatest {

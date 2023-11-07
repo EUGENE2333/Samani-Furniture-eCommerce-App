@@ -37,18 +37,6 @@ class BestProductsAdapter:RecyclerView.Adapter<BestProductsAdapter.BestProductsV
                     tvPrice.visibility = View.GONE
                     tvOfferPercentage.visibility = View.GONE
                 }
-                if(isProductAdded){
-                    binding.apply {
-                        imgFavorite.visibility = View.GONE
-                        imgFavorite2.visibility = View.VISIBLE
-
-                    }
-                }else{
-                        binding.apply {
-                            imgFavorite2.visibility = View.GONE
-                            imgFavorite.visibility = View.VISIBLE
-                        }
-                    }
 
                 tvName.text = product.name
             }
@@ -97,15 +85,14 @@ class BestProductsAdapter:RecyclerView.Adapter<BestProductsAdapter.BestProductsV
         }
         holder.binding.imgFavorite.setOnClickListener {
             onImgFavouriteClick?.invoke(product)
-                 isProductAdded =! isProductAdded
 
                 holder.binding.imgFavorite.visibility = View.GONE
                 holder.binding.imgFavorite2.visibility = View.VISIBLE
         }
 
         holder.binding.imgFavorite2.setOnClickListener {
-            onImgFavouriteClick?.invoke(product)
-            isProductAdded =! isProductAdded
+            onImgFavourite2Click?.invoke(product)
+
                 holder.binding.imgFavorite.visibility = View.VISIBLE
                 holder.binding.imgFavorite2.visibility = View.GONE
 
@@ -114,5 +101,6 @@ class BestProductsAdapter:RecyclerView.Adapter<BestProductsAdapter.BestProductsV
 
     var onClick: ((Product) -> Unit)? = null
     var onImgFavouriteClick: ((Product) -> Unit)? = null
+    var onImgFavourite2Click: ((Product) -> Unit)? = null
 
 }
