@@ -151,4 +151,14 @@
             android:id="@+id/action_bestDealsFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/myListFragment"
+        android:name="com.example.samani.fragments.shopping.MyListFragment"
+        android:label="MyListFragment"
+        tools:layout="@layout/fragment_my_list"
+        >
+        <action
+            android:id="@+id/action_myListFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+    </fragment>
 </navigation>
