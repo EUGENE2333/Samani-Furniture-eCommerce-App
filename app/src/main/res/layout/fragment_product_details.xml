@@ -171,10 +171,32 @@
             android:text="Add to Cart"
             android:textColor="@color/black"
             android:fontFamily="@font/myriad_font"
-            android:textSize="20sp"
+            android:textSize="17sp"
             app:layout_constraintEnd_toEndOf="@id/linearProductReferences"
             app:layout_constraintStart_toStartOf="@id/linearProductReferences"
             app:layout_constraintTop_toBottomOf="@id/tvProductSize"
+            app:layout_constraintVertical_bias="0.0"
+            app:spinning_bar_color="@color/white" />
+
+
+        <Button
+            android:id="@+id/buttonAddToWishlist"
+            style="@style/blueButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/smallButtonHeight"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:elevation="5dp"
+            app:layout_constraintCircleRadius="10dp"
+            android:text="Add to Wishlist"
+            android:textColor="@color/g_white"
+            android:fontFamily="@font/myriad_font"
+            android:textSize="17sp"
+            app:icon= "@drawable/ic_favorite"
+            app:iconGravity="textStart"
+            app:layout_constraintEnd_toEndOf="@id/linearProductReferences"
+            app:layout_constraintStart_toStartOf="@id/linearProductReferences"
+            app:layout_constraintTop_toBottomOf="@id/buttonAddToCart"
             app:layout_constraintVertical_bias="0.0"
             app:spinning_bar_color="@color/white" />
 
@@ -188,7 +210,7 @@
             android:layout_marginEnd="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/buttonAddToCart" />
+            app:layout_constraintTop_toBottomOf="@id/buttonAddToWishlist" />
 
         <LinearLayout
             android:layout_width="wrap_content"
