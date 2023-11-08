@@ -97,19 +97,4 @@ class AddressFragment: Fragment() {
         }
 
     }
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

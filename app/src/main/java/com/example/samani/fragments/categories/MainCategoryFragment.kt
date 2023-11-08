@@ -9,7 +9,9 @@ import android.widget.Toast
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,6 +28,7 @@ import com.example.samani.viewmodel.MainCategoryViewModel
 import com.example.samani.viewmodel.MyListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 
 private const val TAG = "MainCategoryFragment"
@@ -81,97 +84,113 @@ class MainCategoryFragment: Fragment(R.layout.fragment_main_category) {
             addToWishlistViewModel.deleteWishlistProduct(myListProduct)
         }
 
-        lifecycleScope.launchWhenStarted {
-            viewModel.specialProducts.collectLatest {
-                when(it){
-                    is Resource.Loading -> {
-                        showLoading()
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.specialProducts.collectLatest {
+                    when (it) {
+                        is Resource.Loading -> {
+                            showLoading()
+                        }
+                        is Resource.Success -> {
+                            specialProductsAdapter.differ.submitList(it.data)
+                            hideLoading()
+                        }
+                        is Resource.Error -> {
+                            Log.e(TAG, it.message.toString())
+                            Toast.makeText(requireContext(), "${it.message}", Toast.LENGTH_SHORT)
+                                .show()
+                            hideLoading()
+                        }
+                        else -> Unit
+
                     }
-                    is Resource.Success -> {
-                        specialProductsAdapter.differ.submitList(it.data)
-                        hideLoading()
-                    }
-                    is Resource.Error -> {
-                         Log.e(TAG,it.message.toString())
-                        Toast.makeText(requireContext(), "${it.message}", Toast.LENGTH_SHORT).show()
-                        hideLoading()
-                    }
-                    else -> Unit
 
                 }
-
-            }
-            binding.nestedScrollMainCategory.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener{ v,scrollX,_,_,_ ->
-                if( scrollX >= v.getChildAt(0).width - v.width){
-                    viewModel.fetchSpecialProducts()
-                }
-
-            })
-        }
-
-
-
-        lifecycleScope.launchWhenStarted {
-            viewModel.bestDealsProducts.collectLatest {
-                when(it){
-                    is Resource.Loading -> {
-                        showLoading()
+                binding.nestedScrollMainCategory.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, scrollX, _, _, _ ->
+                    if (scrollX >= v.getChildAt(0).width - v.width) {
+                        viewModel.fetchSpecialProducts()
                     }
-                    is Resource.Success -> {
-                        bestDealsAdapter.differ.submitList(it.data)
-                        hideLoading()
-                    }
-                    is Resource.Error -> {
-                        Log.e(TAG,it.message.toString())
-                        Toast.makeText(requireContext(), "${it.message}", Toast.LENGTH_SHORT).show()
-                    }
-                    else -> Unit
 
-                }
-            }
-
-            binding.nestedScrollMainCategory.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener{ v,scrollX,_,_,_ ->
-                if( scrollX >= v.getChildAt(0).width - v.width){
-                    viewModel.fetchBestDealsProducts()
-                }
-
-            })
-        }
-        lifecycleScope.launchWhenStarted {
-            viewModel.bestProducts.collectLatest {
-                when(it){
-                    is Resource.Loading -> {
-                    }
-                    is Resource.Success -> {
-                        bestProductsAdapter.differ.submitList(it.data)
-                    }
-                    is Resource.Error -> {
-                        Log.e(TAG,it.message.toString())
-                        Toast.makeText(requireContext(), "${it.message}", Toast.LENGTH_SHORT).show()
-                    }
-                    else -> Unit
-
-                }
-
+                })
             }
         }
 
-        lifecycleScope.launchWhenStarted {
-            addToWishlistViewModel.myListProducts.collectLatest {
-                when(it){
-                    is Resource.Loading -> {
-                    }
-                    is Resource.Success -> {
-                        Toast.makeText(requireContext(), "Added To Wishlist", Toast.LENGTH_SHORT).show()
-                    }
-                    is Resource.Error -> {
-                        Log.e(TAG,it.message.toString())
-                        Toast.makeText(requireContext(), "${it.message}", Toast.LENGTH_SHORT).show()
-                    }
-                    else -> Unit
 
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.bestDealsProducts.collectLatest {
+                    when (it) {
+                        is Resource.Loading -> {
+                            showLoading()
+                        }
+                        is Resource.Success -> {
+                            bestDealsAdapter.differ.submitList(it.data)
+                            hideLoading()
+                        }
+                        is Resource.Error -> {
+                            Log.e(TAG, it.message.toString())
+                            Toast.makeText(requireContext(), "${it.message}", Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                        else -> Unit
+
+                    }
                 }
 
+                binding.nestedScrollMainCategory.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, scrollX, _, _, _ ->
+                    if (scrollX >= v.getChildAt(0).width - v.width) {
+                        viewModel.fetchBestDealsProducts()
+                    }
+
+                })
+            }
+        }
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.bestProducts.collectLatest {
+                    when (it) {
+                        is Resource.Loading -> {
+                        }
+                        is Resource.Success -> {
+                            bestProductsAdapter.differ.submitList(it.data)
+                        }
+                        is Resource.Error -> {
+                            Log.e(TAG, it.message.toString())
+                            Toast.makeText(requireContext(), "${it.message}", Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                        else -> Unit
+
+                    }
+
+                }
+            }
+        }
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                addToWishlistViewModel.myListProducts.collectLatest {
+                    when (it) {
+                        is Resource.Loading -> {
+                        }
+                        is Resource.Success -> {
+                            Toast.makeText(
+                                requireContext(),
+                                "Added To Wishlist",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                        is Resource.Error -> {
+                            Log.e(TAG, it.message.toString())
+                            Toast.makeText(requireContext(), "${it.message}", Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                        else -> Unit
+
+                    }
+
+                }
             }
         }
 

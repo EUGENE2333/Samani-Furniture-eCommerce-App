@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,6 +29,7 @@ import com.example.samani.viewmodel.OrderViewModel
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
@@ -77,51 +80,70 @@ class BillingFragment: Fragment() {
             findNavController().navigate(R.id.action_billingFragment_to_addressFragment)
         }
 
-        lifecycleScope.launchWhenStarted {
-            billingViewModel.address.collectLatest {
-                when(it){
-                    is Resource.Loading -> {
-                        binding.progressbarAddress.visibility = View.VISIBLE
-                    }
-                    is Resource.Success -> {
-                        addressAdapter.differ.submitList(it.data)
-                        binding.progressbarAddress.visibility = View.GONE
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                billingViewModel.address.collectLatest {
+                    when (it) {
+                        is Resource.Loading -> {
+                            binding.progressbarAddress.visibility = View.VISIBLE
+                        }
+                        is Resource.Success -> {
+                            addressAdapter.differ.submitList(it.data)
+                            binding.progressbarAddress.visibility = View.GONE
 
+                        }
+                        is Resource.Error -> {
+                            binding.progressbarAddress.visibility = View.GONE
+                            Toast.makeText(
+                                requireContext(),
+                                "Error: ${it.message}",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                        else -> Unit
                     }
-                    is Resource.Error -> {
-                        binding.progressbarAddress.visibility = View.GONE
-                        Toast.makeText(requireContext(), "Error: ${it.message}", Toast.LENGTH_SHORT).show()
-                    }
-                    else -> Unit
                 }
             }
         }
 
-        lifecycleScope.launchWhenStarted {
-            orderViewModel.order.collectLatest {
-                when(it){
-                    is Resource.Loading -> {
-                        binding.buttonPlaceOrder.startAnimation()
-                    }
-                    is Resource.Success -> {
-                        binding.buttonPlaceOrder.revertAnimation()
-                        val order = Order(
-                            OrderStatus.Ordered.status,
-                            it.data!!.totalPrice,
-                            it.data.products,
-                            selectedAddress!!
-                        )
-                        val bundle = Bundle().apply { putParcelable("order",order) }
-                        findNavController().navigate(R.id.action_billingFragment_to_orderDetailFragment,bundle)
-                       Snackbar.make(requireView(),"Your order was placed",Snackbar.LENGTH_LONG).show()
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                orderViewModel.order.collectLatest {
+                    when (it) {
+                        is Resource.Loading -> {
+                            binding.buttonPlaceOrder.startAnimation()
+                        }
+                        is Resource.Success -> {
+                            binding.buttonPlaceOrder.revertAnimation()
+                            val order = Order(
+                                OrderStatus.Ordered.status,
+                                it.data!!.totalPrice,
+                                it.data.products,
+                                selectedAddress!!
+                            )
+                            val bundle = Bundle().apply { putParcelable("order", order) }
+                            findNavController().navigate(
+                                R.id.action_billingFragment_to_orderDetailFragment,
+                                bundle
+                            )
+                            Snackbar.make(
+                                requireView(),
+                                "Your order was placed",
+                                Snackbar.LENGTH_LONG
+                            ).show()
 
 
+                        }
+                        is Resource.Error -> {
+                            binding.buttonPlaceOrder.revertAnimation()
+                            Toast.makeText(
+                                requireContext(),
+                                "Error: ${it.message}",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                        else -> Unit
                     }
-                    is Resource.Error -> {
-                        binding.buttonPlaceOrder.revertAnimation()
-                        Toast.makeText(requireContext(), "Error: ${it.message}", Toast.LENGTH_SHORT).show()
-                    }
-                    else -> Unit
                 }
             }
         }

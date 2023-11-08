@@ -1,20 +1,17 @@
 package com.example.samani.fragments.shopping
 
-import android.content.res.Resources
-import android.graphics.Rect
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewTreeObserver
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.core.view.isVisible
-import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,6 +26,7 @@ import com.example.samani.util.hideBottomNavigationView
 import com.example.samani.viewmodel.DetailsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class ProductDetailsFragment: Fragment() {
@@ -78,22 +76,25 @@ class ProductDetailsFragment: Fragment() {
 
 
 
-        lifecycleScope.launchWhenStarted {
-            viewModel.addToCart.collectLatest {
-                when(it){
-                    is Resource.Loading ->{
-                        binding.buttonAddToCart.startAnimation()
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.addToCart.collectLatest {
+                    when (it) {
+                        is Resource.Loading -> {
+                            binding.buttonAddToCart.startAnimation()
+                        }
+                        is Resource.Success -> {
+                            binding.buttonAddToCart.revertAnimation()
+                            binding.buttonAddToCart.setBackgroundColor(resources.getColor(R.color.black))
+                            Toast.makeText(requireContext(), "Added to Cart", Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                        is Resource.Error -> {
+                            binding.buttonAddToCart.revertAnimation()
+                            Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                        }
+                        else -> Unit
                     }
-                    is Resource.Success ->{
-                        binding.buttonAddToCart.revertAnimation()
-                        binding.buttonAddToCart.setBackgroundColor(resources.getColor(R.color.black))
-                        Toast.makeText(requireContext(), "Added to Cart", Toast.LENGTH_SHORT).show()
-                    }
-                    is Resource.Error ->{
-                        binding.buttonAddToCart.revertAnimation()
-                        Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
-                    }
-                    else -> Unit
                 }
             }
         }

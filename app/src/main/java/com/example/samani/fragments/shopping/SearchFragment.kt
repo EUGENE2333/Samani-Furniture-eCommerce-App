@@ -9,7 +9,9 @@ import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -102,25 +104,31 @@ class SearchFragment : Fragment() {
               }
             }
 
-        lifecycleScope.launchWhenStarted {
-            viewModel.searchedProducts.collectLatest {
-                when (it) {
-                    is Resource.Loading -> {
-                        showLoading()
-                        showBottomNavigationView()
-                    }
-                    is Resource.Success -> {
-                        searchedItemAdapter.differ.submitList(it.data)
-                        hideLoading()
-                        hideBottomNavigationView()
-                    }
-                    is Resource.Error -> {
-                        Snackbar.make(requireView(), it.message.toString(), Snackbar.LENGTH_LONG).show()
-                        hideLoading()
-                        showBottomNavigationView()
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.searchedProducts.collectLatest {
+                    when (it) {
+                        is Resource.Loading -> {
+                            showLoading()
+                            showBottomNavigationView()
+                        }
+                        is Resource.Success -> {
+                            searchedItemAdapter.differ.submitList(it.data)
+                            hideLoading()
+                            hideBottomNavigationView()
+                        }
+                        is Resource.Error -> {
+                            Snackbar.make(
+                                requireView(),
+                                it.message.toString(),
+                                Snackbar.LENGTH_LONG
+                            ).show()
+                            hideLoading()
+                            showBottomNavigationView()
 
+                        }
+                        else -> Unit
                     }
-                    else -> Unit
                 }
             }
         }

@@ -97,16 +97,3 @@ class OrderDetailFragment: Fragment() {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

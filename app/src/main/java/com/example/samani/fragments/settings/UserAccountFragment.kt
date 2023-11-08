@@ -13,7 +13,9 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.samani.data.User
@@ -22,6 +24,7 @@ import com.example.samani.util.Resource
 import com.example.samani.viewmodel.UserAccountViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class UserAccountFragment: Fragment() {
@@ -56,41 +59,45 @@ class UserAccountFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        lifecycleScope.launchWhenStarted {
-            viewModel.user.collectLatest {
-                when(it){
-                    is Resource.Loading -> {
-                        showUserLoading()
-                    }
-                    is Resource.Success -> {
-                        hideUserLoading()
-                        showUserInformation(it.data!!)
-                    }
-                    is Resource.Error -> {
-                        Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.user.collectLatest {
+                    when (it) {
+                        is Resource.Loading -> {
+                            showUserLoading()
+                        }
+                        is Resource.Success -> {
+                            hideUserLoading()
+                            showUserInformation(it.data!!)
+                        }
+                        is Resource.Error -> {
+                            Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
 
+                        }
+                        else -> Unit
                     }
-                    else -> Unit
                 }
             }
         }
 
-        lifecycleScope.launchWhenStarted {
-            viewModel.updateInfo.collectLatest {
-                when(it){
-                    is Resource.Loading -> {
-                       binding.buttonSave.startAnimation()
-                    }
-                    is Resource.Success -> {
-                   binding.buttonSave.revertAnimation()
-                        findNavController().navigateUp()
-                    }
-                    is Resource.Error -> {
-                        binding.buttonSave.revertAnimation()
-                        Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.updateInfo.collectLatest {
+                    when (it) {
+                        is Resource.Loading -> {
+                            binding.buttonSave.startAnimation()
+                        }
+                        is Resource.Success -> {
+                            binding.buttonSave.revertAnimation()
+                            findNavController().navigateUp()
+                        }
+                        is Resource.Error -> {
+                            binding.buttonSave.revertAnimation()
+                            Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
 
+                        }
+                        else -> Unit
                     }
-                    else -> Unit
                 }
             }
         }
