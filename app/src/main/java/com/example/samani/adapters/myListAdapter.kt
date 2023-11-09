@@ -75,6 +75,7 @@ class MyListAdapter: RecyclerView.Adapter<MyListAdapter.MyListViewHolder>() {
         }
         holder.binding.removeButton.setOnClickListener {
               onRemoveClick?.invoke(myListProduct)
+            notifyItemRemoved(position)
         }
     }
 

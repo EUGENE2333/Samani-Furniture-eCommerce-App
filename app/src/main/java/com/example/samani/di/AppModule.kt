@@ -2,13 +2,14 @@ package com.example.samani.di
 
 import android.app.Application
 import android.content.Context.MODE_PRIVATE
+import android.content.SharedPreferences
+import com.example.samani.data.repository.SharedPreferencesRepository
 import com.example.samani.firebase.FirebaseCommon
 import com.example.samani.util.Constants.INTRODUCTION_SHARED_PREFERENCES
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.FirebaseStorage
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -33,6 +34,14 @@ object AppModule {
     fun providesIntroductionSharedPreferences(
         application: Application
     ) = application.getSharedPreferences(INTRODUCTION_SHARED_PREFERENCES,MODE_PRIVATE)
+
+  @Provides
+  @Singleton
+    fun providesSharedPreferencesRepository(
+        sharedPreferences: SharedPreferences
+    ): SharedPreferencesRepository{
+        return SharedPreferencesRepository(sharedPreferences)
+    }
 
 
     @Provides

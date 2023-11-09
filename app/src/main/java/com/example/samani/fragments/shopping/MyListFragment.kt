@@ -1,6 +1,5 @@
 package com.example.samani.fragments.shopping
 
-import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -44,18 +43,25 @@ class MyListFragment: Fragment() {
         setUpMyListRv()
 
         myListAdapter.onImageClick = {
-            val bundle = Bundle().apply{putParcelable("product",it.product)}
-            findNavController().navigate(R.id.action_myListFragment_to_productDetailsFragment,bundle)
+            val bundle = Bundle().apply { putParcelable("product", it.product) }
+            findNavController().navigate(
+                R.id.action_myListFragment_to_productDetailsFragment,
+                bundle
+            )
 
         }
-        myListAdapter.onRemoveClick ={
-              viewModel.deleteWishlistProduct(it)
+        myListAdapter.onRemoveClick = {
+            viewModel.deleteWishlistProduct(it)
         }
         myListAdapter.onViewClick = {
-            val bundle = Bundle().apply{putParcelable("product",it.product)}
-            findNavController().navigate(R.id.action_myListFragment_to_productDetailsFragment,bundle)
-
+            val bundle = Bundle().apply { putParcelable("product", it.product) }
+            findNavController().navigate(
+                R.id.action_myListFragment_to_productDetailsFragment,
+                bundle
+            )
         }
+
+        findNavController().popBackStack("myListFragment", false)
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -66,15 +72,16 @@ class MyListFragment: Fragment() {
                         }
                         is Resource.Success -> {
                             binding.progressBar.visibility = View.GONE
-                            if (it.data!!.isEmpty()) {
+
+                            val data = it.data ?: emptyList()
+                            if (data.isEmpty()) {
                                 binding.progressBar.visibility = View.INVISIBLE
                                 showEmptyList()
                             } else {
-                                hideEmptyList()
-                                myListAdapter.differ.submitList(it.data)
                                 binding.progressBar.visibility = View.INVISIBLE
+                                myListAdapter.differ.submitList(it.data)
+                                hideEmptyList()
                             }
-
                         }
                         is Resource.Error -> {
                             binding.progressBar.visibility = View.GONE
@@ -84,34 +91,9 @@ class MyListFragment: Fragment() {
                         else -> Unit
 
                     }
-
                 }
             }
         }
-
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.deleteDialog.collectLatest {
-                    val alertDialog = AlertDialog.Builder(requireContext()).apply {
-                        setTitle("Delete item from cart")
-                        setMessage("Do you want to delete this item from your cart?")
-                        setNegativeButton("Cancel") { dialog, _ ->
-                            dialog.dismiss()
-
-                        }
-                        setPositiveButton("Yes") { dialog, _ ->
-                            viewModel.deleteWishlistProduct(it)
-                            dialog.dismiss()
-                        }
-                    }
-                    alertDialog.create()
-                    alertDialog.show()
-
-                }
-
-            }
-        }
-
     }
 
     private fun hideEmptyList() {

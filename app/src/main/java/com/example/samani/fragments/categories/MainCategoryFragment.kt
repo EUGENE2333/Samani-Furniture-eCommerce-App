@@ -20,15 +20,16 @@ import com.example.samani.adapters.BestDealsHomePageAdapter
 import com.example.samani.adapters.BestProductsAdapter
 import com.example.samani.adapters.SpecialProductsAdapter
 import com.example.samani.data.MyListProduct
+import com.example.samani.data.repository.SharedPreferencesRepository
 import com.example.samani.databinding.FragmentMainCategoryBinding
 import com.example.samani.util.Resource
 import com.example.samani.util.showBottomNavigationView
-import com.example.samani.viewmodel.AddToWishlistViewModel
 import com.example.samani.viewmodel.MainCategoryViewModel
 import com.example.samani.viewmodel.MyListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 
 private const val TAG = "MainCategoryFragment"
@@ -38,8 +39,11 @@ class MainCategoryFragment: Fragment(R.layout.fragment_main_category) {
     private lateinit var specialProductsAdapter: SpecialProductsAdapter
     private lateinit var bestProductsAdapter: BestProductsAdapter
     private lateinit var bestDealsAdapter: BestDealsHomePageAdapter
-    private val viewModel by viewModels<MainCategoryViewModel>()
-    private val addToWishlistViewModel by viewModels<AddToWishlistViewModel>()
+    private val mainCategoryViewModel by viewModels<MainCategoryViewModel>()
+    private val myListViewModel by viewModels<MyListViewModel>()
+
+    @Inject
+    lateinit var sharedPreferencesRepository: SharedPreferencesRepository
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -76,17 +80,16 @@ class MainCategoryFragment: Fragment(R.layout.fragment_main_category) {
             findNavController().navigate(R.id.action_homeFragment_to_bestDealsFragment)
         }
         bestProductsAdapter.onImgFavouriteClick ={
-            addToWishlistViewModel.addProductToWishlist(MyListProduct(product = it))
+            myListViewModel.addProductToWishlist(MyListProduct(product = it))
 
         }
-        bestProductsAdapter.onImgFavourite2Click ={
-            val myListProduct = MyListProduct(product = it)
-            addToWishlistViewModel.deleteWishlistProduct(myListProduct)
+        bestProductsAdapter.onImgFavouriteFilledClick ={
+            myListViewModel.deleteWishlistProduct(MyListProduct(product = it))
         }
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.specialProducts.collectLatest {
+                mainCategoryViewModel.specialProducts.collectLatest {
                     when (it) {
                         is Resource.Loading -> {
                             showLoading()
@@ -108,7 +111,7 @@ class MainCategoryFragment: Fragment(R.layout.fragment_main_category) {
                 }
                 binding.nestedScrollMainCategory.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, scrollX, _, _, _ ->
                     if (scrollX >= v.getChildAt(0).width - v.width) {
-                        viewModel.fetchSpecialProducts()
+                        mainCategoryViewModel.fetchSpecialProducts()
                     }
 
                 })
@@ -119,7 +122,7 @@ class MainCategoryFragment: Fragment(R.layout.fragment_main_category) {
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.bestDealsProducts.collectLatest {
+                mainCategoryViewModel.bestDealsProducts.collectLatest {
                     when (it) {
                         is Resource.Loading -> {
                             showLoading()
@@ -140,7 +143,7 @@ class MainCategoryFragment: Fragment(R.layout.fragment_main_category) {
 
                 binding.nestedScrollMainCategory.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, scrollX, _, _, _ ->
                     if (scrollX >= v.getChildAt(0).width - v.width) {
-                        viewModel.fetchBestDealsProducts()
+                        mainCategoryViewModel.fetchBestDealsProducts()
                     }
 
                 })
@@ -148,7 +151,7 @@ class MainCategoryFragment: Fragment(R.layout.fragment_main_category) {
         }
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.bestProducts.collectLatest {
+                mainCategoryViewModel.bestProducts.collectLatest {
                     when (it) {
                         is Resource.Loading -> {
                         }
@@ -168,35 +171,9 @@ class MainCategoryFragment: Fragment(R.layout.fragment_main_category) {
             }
         }
 
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                addToWishlistViewModel.myListProducts.collectLatest {
-                    when (it) {
-                        is Resource.Loading -> {
-                        }
-                        is Resource.Success -> {
-                            Toast.makeText(
-                                requireContext(),
-                                "Added To Wishlist",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                        is Resource.Error -> {
-                            Log.e(TAG, it.message.toString())
-                            Toast.makeText(requireContext(), "${it.message}", Toast.LENGTH_SHORT)
-                                .show()
-                        }
-                        else -> Unit
-
-                    }
-
-                }
-            }
-        }
-
         binding.nestedScrollMainCategory.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener{ v,_,scrollY,_,_ ->
             if(v.getChildAt(0).bottom <= v.height + scrollY) {
-                viewModel.fetchBestProducts()
+                mainCategoryViewModel.fetchBestProducts()
             }
 
 
@@ -204,7 +181,7 @@ class MainCategoryFragment: Fragment(R.layout.fragment_main_category) {
     }
 
     private fun setUpBestProductsRv() {
-        bestProductsAdapter = BestProductsAdapter()
+        bestProductsAdapter = BestProductsAdapter(sharedPreferencesRepository)
         binding.rvBestProducts.apply {
             layoutManager =
                 GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)

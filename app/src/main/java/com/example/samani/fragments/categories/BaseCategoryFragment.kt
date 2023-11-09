@@ -1,6 +1,5 @@
 package com.example.samani.fragments.categories
 
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,16 +13,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.samani.R
 import com.example.samani.adapters.BestProductsAdapter
 import com.example.samani.adapters.LargeProductsAdapter
+import com.example.samani.data.repository.SharedPreferencesRepository
 import com.example.samani.databinding.FragmentBaseCategoryBinding
-import com.example.samani.fragments.shopping.HomeFragment
 import com.example.samani.util.showBottomNavigationView
-import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 open class BaseCategoryFragment:Fragment(R.layout.fragment_base_category){
 
+    @Inject
+    lateinit var sharedPreferencesRepository: SharedPreferencesRepository
+
     private lateinit var binding: FragmentBaseCategoryBinding
-   protected val offerAdapter: BestProductsAdapter by lazy { BestProductsAdapter() }
-    protected val bestProductsAdapter: BestProductsAdapter by lazy { BestProductsAdapter() }
+   protected val offerAdapter: BestProductsAdapter by lazy { BestProductsAdapter(sharedPreferencesRepository) }
+    protected val bestProductsAdapter: BestProductsAdapter by lazy { BestProductsAdapter(sharedPreferencesRepository) }
     protected val largeProductsAdapter: LargeProductsAdapter by lazy {LargeProductsAdapter()}
 
 
